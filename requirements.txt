@@ -1,3 +1,10 @@
 altair
 pandas
 streamlit
+fitz
+langchain
+openai
+tiktoken
+unstructured
+pytesseract
+faiss-cpu

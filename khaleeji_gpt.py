@@ -1,32 +1,36 @@
+
 import requests
-d = []
-for page in range(1,200):
-  # Define the API endpoint URL
-  url = f"https://cryptonews-api.com/api/v1/category?section=alltickers&items=100&page={str(page)}&token=ur88cttu7oxwnozb3urqh72czdo6n2niqpzx755v"
-
-  # Send an HTTP GET request to the API endpoint
-  response = requests.get(url)
-
-  # Check if the request was successful (HTTP status code 200)
-  if response.status_code == 200:
-      # Parse the JSON data
-      data = response.json()
-
-      # Extract the news items from the JSON data
-      news_items = data.get('data', [])
-
-      # Print the news items
-      for item in news_items:
-          d.append(item)
-  else:
-
-      print(f"Error: Unable to fetch data from the API. Status code: {response.content}")
-      
-
-      from urllib.request import urlopen, urlretrieve
+from urllib.request import urlopen, urlretrieve
 from bs4 import NavigableString, Tag
 import bs4 as bs
 import operator
+
+def get_new_data_df():
+  d = []
+  for page in range(1,100):
+    # Define the API endpoint URL
+    url = f"https://cryptonews-api.com/api/v1/category?section=alltickers&items=100&page={str(page)}&token=ur88cttu7oxwnozb3urqh72czdo6n2niqpzx755v"
+
+    # Send an HTTP GET request to the API endpoint
+    response = requests.get(url)
+
+    # Check if the request was successful (HTTP status code 200)
+    if response.status_code == 200:
+        # Parse the JSON data
+        data = response.json()
+
+        # Extract the news items from the JSON data
+        news_items = data.get('data', [])
+
+        # Print the news items
+        for item in news_items:
+            d.append(item)
+    else:
+
+        print(f"Error: Unable to fetch data from the API. Status code: {response.content}")
+        
+    df = pd.DataFrame(data)
+    return df
 
 def get_html(link_url):
     link_url=link_url.replace(" ", "%20")

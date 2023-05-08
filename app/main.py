@@ -46,9 +46,6 @@ Question: {question}
 =========
 Answer in Markdown:"""
 QA_PROMPT = PromptTemplate(template=template, input_variables=[ "question", "context"])
-        
-os.environ['OPENAI_API_KEY']= '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'
-openai.api_key = os.environ["OPENAI_API_KEY"]
 
 gpt4 = ChatOpenAI(model="gpt-4", temperature=0, request_timeout=300)
 

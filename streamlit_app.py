@@ -52,8 +52,6 @@ openai.api_key = os.environ["OPENAI_API_KEY"]
 
 gpt4 = ChatOpenAI(model="gpt-4", temperature=0, request_timeout=300)
 
-nltk.download('punkt')
-nltk.download('averaged_perceptron_tagger')
 
 openai.api_key = os.environ["OPENAI_API_KEY"]
 

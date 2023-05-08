@@ -131,17 +131,17 @@ question = st.text_input("Question:")
 model = st.selectbox("model:", ["gpt-4", "gpt-3.5-turbo"], index=0)
 ​
 if st.button("Submit"):
-with st.spinner("Processing..."):
-    chat_history = []
+        with st.spinner("Processing..."):
+            chat_history = []
 
-    answer, chat_history = ask_question(question=question, chat_history=chat_history)
-    if operation == "Read and summarise":
-        f = open(f"1_output.txt", "r")
-        input_text = " ".join(f.readlines()).replace("\n\n", " ")
-        result = summary(input_text)
-    else:
-        result = ask_question(question=question, chat_history=chat_history)
-    st.subheader("Output:")
-    st.write(result)
+            answer, chat_history = ask_question(question=question, chat_history=chat_history)
+            if operation == "Read and summarise":
+                f = open(f"1_output.txt", "r")
+                input_text = " ".join(f.readlines()).replace("\n\n", " ")
+                result = summary(input_text)
+            else:
+                result = ask_question(question=question, chat_history=chat_history)
+            st.subheader("Output:")
+            st.write(result)
 ​
 

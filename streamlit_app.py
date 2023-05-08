@@ -126,7 +126,7 @@ if operation == "Read and answer question":
         question = st.text_input("Question:")
         
         result, chat_history = ask_question(question=question, chat_history=chat_history)
-        result appent(
+        chat_history += result
 if operation == "Read and summarise":
         f = open(f"1_output.txt", "r")
         input_text = " ".join(f.readlines()).replace("\n\n", " ")

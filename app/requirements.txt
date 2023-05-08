@@ -7,3 +7,4 @@ openai
 unstructured
 pytesseract
 faiss-cpu
+tiktoken

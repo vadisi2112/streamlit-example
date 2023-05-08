@@ -119,30 +119,29 @@ def summary(input_text, use_gpt4=True):
     return chain.run(docs)
 ​
 ​
-def main():
-    st.title("Document Summarizer and Question Answering")
+st.title("Khaleeji GPT")
 ​
-    operation = st.radio(
-        "Choose an operation:", [ "Read and answer question", "Read and summarise"]
-    )
+operation = st.radio(
+"Choose an operation:", [ "Read and answer question", "Read and summarise"]
+)
 ​
-    if operation == "Read and answer question":
-        question = st.text_input("Question:")
+if operation == "Read and answer question":
+question = st.text_input("Question:")
 ​
-    model = st.selectbox("model:", ["gpt-4", "gpt-3.5-turbo"], index=0)
+model = st.selectbox("model:", ["gpt-4", "gpt-3.5-turbo"], index=0)
 ​
-    if st.button("Submit"):
-        with st.spinner("Processing..."):
-            chat_history = []
+if st.button("Submit"):
+with st.spinner("Processing..."):
+    chat_history = []
 
-            answer, chat_history = ask_question(question=question, chat_history=chat_history)
-            if operation == "Read and summarise":
-                f = open(f"1_output.txt", "r")
-                input_text = " ".join(f.readlines()).replace("\n\n", " ")
-                result = summary(input_text)
-            else:
-                result = ask_question(question=question, chat_history=chat_history)
-            st.subheader("Output:")
-            st.write(result)
+    answer, chat_history = ask_question(question=question, chat_history=chat_history)
+    if operation == "Read and summarise":
+        f = open(f"1_output.txt", "r")
+        input_text = " ".join(f.readlines()).replace("\n\n", " ")
+        result = summary(input_text)
+    else:
+        result = ask_question(question=question, chat_history=chat_history)
+    st.subheader("Output:")
+    st.write(result)
 ​
 
